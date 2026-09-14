@@ -288,10 +288,11 @@ const MEN_PRODUCTS: StoreProduct[] = [
     description:
       "Translucent silicone heel cups that slip on barefoot and disappear inside any closed shoe, adding discreet height the moment you stand up. Soft perforated gel keeps them breathable; the half-sleeve design stays locked to your heel all day.",
     imageAlts: [
-      "Side profile of a bare foot wearing a translucent height insole with a +1.5 inch overlay",
-      "Translucent silicone height insole heel cups against a neutral backdrop",
-      "Man standing tall and confident in sneakers with height insoles hidden inside",
-      "Height insole heel cups side profile showing the added lift",
+      "Side-by-side before/after of the same man in the same pose standing with and without hidden height insoles, showing added height, labeled BEFORE and AFTER",
+      "Translucent pale-pink silicone heel insoles resting on a wooden floor beside a pair of white sneakers",
+      "A hand slipping one translucent silicone heel insole over a bare heel on the edge of a bed",
+      "Man standing tall in white sneakers holding one translucent heel insole up by his chest",
+      "Clean side profile of a bare foot wearing a translucent height insole with added lift",
     ],
     benefits: [
       "Adds about 1.5 inches of real height the second you put them on",
@@ -314,10 +315,11 @@ const MEN_PRODUCTS: StoreProduct[] = [
     price: 2499,
     currency: "USD",
     images: [
+      ASCEND_IMG("lift-height-booster-insole-04-before-after"),
+      ASCEND_IMG("lift-height-booster-insole-01-hero"),
+      ASCEND_IMG("lift-height-booster-insole-02-apply"),
+      ASCEND_IMG("lift-height-booster-insole-03-standing"),
       IMG("images/ascend/lift-height-booster-insole-clean-side-profile.jpg"),
-      ASCEND_IMG("lift-height-booster-insole-1"),
-      ASCEND_IMG("lift-height-booster-insole-2"),
-      ASCEND_IMG("lift-height-booster-insole-3"),
     ],
     aliexpressProductId: "height-insole-system",
   },
@@ -330,9 +332,10 @@ const MEN_PRODUCTS: StoreProduct[] = [
     description:
       "Soft silicone adhesive shoulder pads that stick directly to the shoulder and broaden your frame under tees, button-downs, and jackets. Skin-safe adhesive holds all day and washes clean for reuse.",
     imageAlts: [
-      "Silicone adhesive shoulder pad insert against a neutral backdrop",
-      "Silicone shoulder pad inserts laid out on a dark surface",
-      "Silicone shoulder pad insert close-up showing the adhesive backing",
+      "Side-by-side before/after of the same man in a white tee with and without shoulder pads, showing a clearly broader shoulder line, labeled BEFORE and AFTER",
+      "Man in a fitted white tee with invisible shoulder pads broadening his frame, one hand adjusting the collar",
+      "Man guiding a light-peach silicone shoulder pad onto his bare shoulder in front of a mirror",
+      "Pair of light-peach translucent silicone shoulder pads resting on a linen-covered bed",
     ],
     benefits: [
       "Instantly broadens the shoulder line — the V-taper shortcut",
@@ -355,9 +358,10 @@ const MEN_PRODUCTS: StoreProduct[] = [
     price: 2499,
     currency: "USD",
     images: [
-      ASCEND_IMG("frame-structure-shoulder-pads-1"),
-      ASCEND_IMG("frame-structure-shoulder-pads-2"),
-      ASCEND_IMG("frame-structure-shoulder-pads-3"),
+      ASCEND_IMG("frame-structure-shoulder-pads-04-before-after"),
+      ASCEND_IMG("frame-structure-shoulder-pads-03-on-ugc"),
+      ASCEND_IMG("frame-structure-shoulder-pads-02-apply"),
+      ASCEND_IMG("frame-structure-shoulder-pads-01-hero"),
     ],
     aliexpressProductId: "frame-shoulder-inserts",
   },
@@ -370,9 +374,10 @@ const MEN_PRODUCTS: StoreProduct[] = [
     description:
       "A jawline exerciser kit with three food-grade silicone chew trainers in progressive resistance — 40, 50, and 60 lb — that train the masseter muscles framing the jaw. Pocket-sized, ten minutes a day.",
     imageAlts: [
-      "Three progressive-resistance silicone jaw trainer chew tools against a neutral backdrop",
-      "Jaw trainer kit with three resistance levels laid out",
-      "Close-up of a silicone jaw exerciser trainer in hand",
+      "Six silicone jaw trainer chew pieces in white, black and gray laid on a wooden desk",
+      "Man chewing a silicone jaw trainer at a home office desk, jaw muscles visibly flexing",
+      "A hand holding one rounded silicone jaw trainer chew piece up",
+      "Man chewing a silicone jaw trainer in a parked car, jaw flexing",
     ],
     benefits: [
       "Three progressive resistance levels — 40, 50, 60 lb — that scale as you do",
@@ -395,9 +400,10 @@ const MEN_PRODUCTS: StoreProduct[] = [
     price: 2999,
     currency: "USD",
     images: [
-      ASCEND_IMG("edge-jawline-exerciser-1"),
-      ASCEND_IMG("edge-jawline-exerciser-2"),
-      ASCEND_IMG("edge-jawline-exerciser-3"),
+      ASCEND_IMG("edge-jawline-exerciser-01-hero"),
+      ASCEND_IMG("edge-jawline-exerciser-02-using"),
+      ASCEND_IMG("edge-jawline-exerciser-03-inhand"),
+      ASCEND_IMG("edge-jawline-exerciser-04-on-the-go"),
     ],
     aliexpressProductId: "jaw-forge-trainer-kit",
   },
@@ -410,6 +416,7 @@ const MEN_PRODUCTS: StoreProduct[] = [
     description:
       "A multi-node electric scalp massager with rotating silicone clusters that knead the scalp — dry, or in the shower. Designed to support circulation at the root and a deeper clean than fingers alone. USB rechargeable.",
     imageAlts: [
+      "Man using the electric scalp massager in a shampoo-lathered shower, eyes closed, relaxed",
       "Multi-node electric scalp massager with rotating silicone clusters",
       "Electric scalp brush showing the silicone cluster head",
       "Close-up of the electric scalp massager cluster head",
@@ -435,6 +442,7 @@ const MEN_PRODUCTS: StoreProduct[] = [
     price: 2799,
     currency: "USD",
     images: [
+      ASCEND_IMG("current-electric-scalp-brush-04-shower-ugc"),
       ASCEND_IMG("current-electric-scalp-brush-1"),
       ASCEND_IMG("current-electric-scalp-brush-2"),
       ASCEND_IMG("current-electric-scalp-brush-3"),
