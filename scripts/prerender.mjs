@@ -108,7 +108,16 @@ async function main() {
   }
 
   const { server, port } = await serve()
-  const browser = await puppeteer.launch({ headless: true })
+  // CI (GitHub Actions Ubuntu ≥23.10) blocks the unprivileged-user-namespace
+  // sandbox that headless Chrome wants. Prerender only fetches our own local
+  // 127.0.0.1 server, so --no-sandbox is safe here. No-op on mac/win.
+  const browser = await puppeteer.launch({
+    headless: true,
+    args:
+      process.platform === "linux"
+        ? ["--no-sandbox", "--disable-setuid-sandbox"]
+        : [],
+  })
 
   try {
     for (const route of ROUTES) {
