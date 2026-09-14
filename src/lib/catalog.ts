@@ -18,6 +18,10 @@
 
 export type BrandKey = "ascend" | "glowup"
 
+/** Build-time base (import.meta.env.BASE_URL — already includes trailing slash). */
+const BASE = (import.meta.env.BASE_URL || "/").replace(/\/$/, "") + "/"
+const IMG = (p: string) => `${BASE}${p.replace(/^\//, "")}`
+
 export type StoreProduct = {
   brand: BrandKey
   handle: string
@@ -42,9 +46,9 @@ export type StoreProduct = {
   live?: boolean
 }
 
-export const ASCEND_IMG = (stem: string) => `/images/ascend/${stem}.webp`
+export const ASCEND_IMG = (stem: string) => IMG(`images/ascend/${stem}.webp`)
 export const GLOWUP_IMG = (slug: string, stem: string) =>
-  `/images/glowup/${slug}/${stem}.png`
+  IMG(`images/glowup/${slug}/${stem}.png`)
 
 /* ── Women's — glowup (5) ─────────────────────────────────── */
 
@@ -310,7 +314,7 @@ const MEN_PRODUCTS: StoreProduct[] = [
     price: 2499,
     currency: "USD",
     images: [
-      "/images/ascend/lift-height-booster-insole-clean-side-profile.jpg",
+      IMG("images/ascend/lift-height-booster-insole-clean-side-profile.jpg"),
       ASCEND_IMG("lift-height-booster-insole-1"),
       ASCEND_IMG("lift-height-booster-insole-2"),
       ASCEND_IMG("lift-height-booster-insole-3"),

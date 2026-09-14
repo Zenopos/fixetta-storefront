@@ -1,0 +1,50 @@
+name: Deploy storefront preview to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the workflow to write the Pages site and push the gh-pages branch.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (GitHub Pages sub-path base)
+        # Demo/preview build — no Medusa backend needed. base must equal the
+        # project-page sub-path so assets/images load under the preview URL.
+        # Repo root IS the app (vite.config.ts/package.json at root), so no
+        # 'app/' prefix anywhere in these paths.
+        run: VITE_BASE=/fixetta-storefront/ npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+          # keep Jekyll from meddling with underscore-prefixed assets
+          enable_jekyll: false

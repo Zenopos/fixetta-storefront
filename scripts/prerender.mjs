@@ -23,6 +23,11 @@ import puppeteer from "puppeteer"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST = path.join(__dirname, "..", "dist")
 
+// Must mirror vite.config's base so built asset URLs resolve during capture.
+// e.g. base "/fixetta-storefront/" -> mount "/fixetta-storefront".
+const BASE = process.env.VITE_BASE || process.env.VITE_PUBLIC_PATH || "/"
+const MOUNT = BASE === "/" ? "" : BASE.replace(/\/$/, "")
+
 const ROUTES = [
   "/",
   // ASCEND — men's (home + roadmap + 4 products)
@@ -68,7 +73,10 @@ const MIME = {
 function serve() {
   const server = createServer(async (req, res) => {
     try {
-      const url = decodeURIComponent((req.url || "/").split("?")[0])
+      const raw = decodeURIComponent((req.url || "/").split("?")[0])
+      let url = raw
+      if (MOUNT && raw.startsWith(MOUNT + "/")) url = raw.slice(MOUNT.length) || "/"
+      else if (MOUNT && raw === MOUNT) url = "/"
       let file = path.join(DIST, url === "/" ? "index.html" : url)
       if (!file.startsWith(DIST)) {
         res.writeHead(403).end()
@@ -112,7 +120,7 @@ async function main() {
           window.__appRendered = true
         })
       })
-      await page.goto(`http://127.0.0.1:${port}${route}`, {
+      await page.goto(`http://127.0.0.1:${port}${MOUNT}${route}`, {
         waitUntil: "networkidle0",
         timeout: 30000,
       })
