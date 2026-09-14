@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ASCEND dark-luxury system: near-black ground, bone text, muted gold accent */
+    --background: 0 0% 4%;
+    --foreground: 43 23% 94%;
+    --card: 0 0% 7%;
+    --card-foreground: 43 23% 94%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 43 23% 94%;
+    --primary: 36 32% 53%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 43 23% 94%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 40 8% 58%;
+    --accent: 36 32% 53%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 100% / 0.09;
+    --input: 0 0% 100% / 0.14;
+    --ring: 36 32% 53%;
+    --radius: 0rem;
+  }
+}
+
+@layer base {
+  html {
+    background: #0a0a0a;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  .font-display {
+    font-family: "Anton", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+  }
+  .font-mono2 {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+  ::selection {
+    background: #af915f;
+    color: #0a0a0a;
+  }
+}
+
+@layer utilities {
+  .hairline {
+    border-color: rgba(255, 255, 255, 0.09);
+  }
+  .hairline-strong {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+  .text-gold {
+    color: #af915f;
+  }
+  .bg-gold {
+    background-color: #af915f;
+  }
+  .border-gold {
+    border-color: #af915f;
+  }
+  /* glowup (women's) sub-brand accent — warm rose for a feminine identity. */
+  .text-glowup {
+    color: #c1856f;
+  }
+  .bg-glowup {
+    background-color: #c1856f;
+  }
+  .border-glowup {
+    border-color: #c1856f;
+  }
+  .text-cream {
+    color: #fce1b6;
+  }
+}

@@ -1,0 +1,23 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.local
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.medusa/
+
+# Backend lives in its OWN repo (medusa-backend/) — exclude from storefront
+medusa-backend/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
