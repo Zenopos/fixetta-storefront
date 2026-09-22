@@ -30,35 +30,35 @@ export default function TopBar() {
     }
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 bg-[#0a0a0a]/90 backdrop-blur border-b hairline">
+    <header className="fixed top-0 inset-x-0 z-40 bg-[var(--c-bg)]/90 backdrop-blur border-b hairline">
       <div className="mx-auto max-w-7xl px-5 h-14 flex items-center justify-between">
         <Link
           to={homePath}
-          className="font-display text-xl tracking-wide text-white"
+          className="font-display text-xl tracking-wide text-[var(--c-ink)]"
         >
           {wordmark}
-          <span className="text-gold">.</span>
+          <span className="text-[var(--c-accent)]">.</span>
         </Link>
-        <nav className="hidden sm:flex items-center gap-8 font-mono2 text-[11px] tracking-[0.25em] text-neutral-400">
+        <nav className="hidden sm:flex items-center gap-8 font-mono2 text-[11px] tracking-[0.25em] text-[var(--c-mut)]">
           {brand ? (
             <>
               <a
                 href={`${brandPath}/#catalog`}
                 onClick={goToSection("catalog")}
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--c-ink)] transition-colors"
               >
                 SHOP
               </a>
               <Link
                 to={`${brandPath}/roadmap`}
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--c-ink)] transition-colors"
               >
                 {brand === "glowup" ? "RITUAL" : "ROADMAP"}
               </Link>
               <a
                 href={`${brandPath}/#ethos`}
                 onClick={goToSection("ethos")}
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--c-ink)] transition-colors"
               >
                 ETHOS
               </a>
@@ -69,7 +69,7 @@ export default function TopBar() {
                 <Link
                   key={b}
                   to={BRANDS[b].path}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[var(--c-ink)] transition-colors"
                 >
                   {BRANDS[b].wordmark.toUpperCase()}
                 </Link>
@@ -78,7 +78,9 @@ export default function TopBar() {
           )}
           <span
             className={`px-2 py-1 border hairline ${
-              live.live ? "text-gold border-gold" : "text-neutral-500"
+              live.live
+                ? "text-[var(--c-accent)] border-[var(--c-accent)]"
+                : "text-[var(--c-mut2)]"
             }`}
             title={
               live.live
@@ -92,7 +94,7 @@ export default function TopBar() {
         <button
           onClick={() => setDrawerOpen(true)}
           aria-label={`Open cart, ${count} items`}
-          className="font-mono2 text-[11px] tracking-[0.25em] text-white border hairline-strong px-4 py-2 hover:bg-white hover:text-black transition-colors"
+          className="font-mono2 text-[11px] tracking-[0.25em] text-[var(--c-ink)] border hairline-strong px-4 py-2 hover:bg-[var(--c-ink)] hover:text-[var(--c-bg)] transition-colors"
         >
           CART [{count}]
         </button>

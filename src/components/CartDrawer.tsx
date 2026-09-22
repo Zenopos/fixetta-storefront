@@ -40,18 +40,18 @@ export default function CartDrawer() {
         role="dialog"
         aria-modal="true"
         aria-label="Shopping cart"
-        className={`absolute right-0 top-0 h-full w-full max-w-md bg-[#0d0d0d] border-l hairline-strong flex flex-col transition-transform duration-300 ease-out ${
+        className={`absolute right-0 top-0 h-full w-full max-w-md bg-[var(--c-bg-card)] border-l hairline-strong flex flex-col transition-transform duration-300 ease-out ${
           drawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between px-6 h-14 border-b hairline">
-          <span className="font-mono2 text-[11px] tracking-[0.25em] text-neutral-400">
+          <span className="font-mono2 text-[11px] tracking-[0.25em] text-[var(--c-mut)]">
             YOUR CART
           </span>
           <button
             onClick={() => setDrawerOpen(false)}
             aria-label="Close cart"
-            className="font-mono2 text-[11px] tracking-[0.25em] text-white hover:text-gold"
+            className="font-mono2 text-[11px] tracking-[0.25em] text-[var(--c-ink)] hover:text-[var(--c-accent)]"
           >
             CLOSE ×
           </button>
@@ -59,8 +59,8 @@ export default function CartDrawer() {
 
         <div className="flex-1 overflow-y-auto">
           {items.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center gap-3 text-neutral-500">
-              <span className="font-display text-3xl text-neutral-700">
+            <div className="h-full flex flex-col items-center justify-center gap-3 text-[var(--c-mut2)]">
+              <span className="font-display text-3xl text-[var(--c-mut5)]">
                 EMPTY
               </span>
               <span className="font-mono2 text-[11px] tracking-[0.25em]">
@@ -73,7 +73,7 @@ export default function CartDrawer() {
                 key={product.handle}
                 className="flex gap-4 px-6 py-5 border-b hairline"
               >
-                <div className="w-20 h-20 shrink-0 flex items-center justify-center overflow-hidden bg-[#111]">
+                <div className="w-20 h-20 shrink-0 flex items-center justify-center overflow-hidden bg-[var(--c-bg-sub)]">
                   <img
                     src={product.images[0]}
                     alt={product.imageAlts[0] ?? product.title}
@@ -83,20 +83,20 @@ export default function CartDrawer() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between gap-2">
-                    <span className="font-display text-lg text-white">
+                    <span className="font-display text-lg text-[var(--c-ink)]">
                       {product.shortName}
                     </span>
-                    <span className="font-mono2 text-sm text-gold">
+                    <span className="font-mono2 text-sm text-[var(--c-accent)]">
                       {formatMoney(product.price * quantity)}
                     </span>
                   </div>
-                  <p className="font-mono2 text-[10px] tracking-[0.2em] text-neutral-500 mt-1 truncate">
+                  <p className="font-mono2 text-[10px] tracking-[0.2em] text-[var(--c-mut2)] mt-1 truncate">
                     {product.tagline.toUpperCase()}
                   </p>
                   <div className="flex items-center gap-3 mt-3">
                     <div className="flex border hairline-strong">
                       <button
-                        className="w-7 h-7 text-neutral-400 hover:text-white"
+                        className="w-7 h-7 text-[var(--c-mut)] hover:text-[var(--c-ink)]"
                         onClick={() => setQuantity(product.handle, quantity - 1)}
                         aria-label={`Decrease ${product.shortName} quantity`}
                       >
@@ -106,7 +106,7 @@ export default function CartDrawer() {
                         {quantity}
                       </span>
                       <button
-                        className="w-7 h-7 text-neutral-400 hover:text-white"
+                        className="w-7 h-7 text-[var(--c-mut)] hover:text-[var(--c-ink)]"
                         onClick={() => setQuantity(product.handle, quantity + 1)}
                         aria-label={`Increase ${product.shortName} quantity`}
                       >
@@ -116,7 +116,7 @@ export default function CartDrawer() {
                     <button
                       onClick={() => removeLine(product.handle)}
                       aria-label={`Remove ${product.shortName} from cart`}
-                      className="font-mono2 text-[10px] tracking-[0.2em] text-neutral-500 hover:text-red-400"
+                      className="font-mono2 text-[10px] tracking-[0.2em] text-[var(--c-mut2)] hover:text-red-400"
                     >
                       REMOVE
                     </button>
@@ -130,10 +130,10 @@ export default function CartDrawer() {
         {items.length > 0 && (
           <div className="border-t hairline-strong px-6 py-5 space-y-4">
             <div className="flex justify-between font-mono2 text-sm">
-              <span className="text-neutral-400 tracking-[0.2em]">SUBTOTAL</span>
-              <span className="text-white">{formatMoney(subtotal)}</span>
+              <span className="text-[var(--c-mut)] tracking-[0.2em]">SUBTOTAL</span>
+              <span className="text-[var(--c-ink)]">{formatMoney(subtotal)}</span>
             </div>
-            <p className="font-mono2 text-[10px] tracking-[0.15em] text-neutral-500">
+            <p className="font-mono2 text-[10px] tracking-[0.15em] text-[var(--c-mut2)]">
               FREE TRACKED SHIPPING · 7–15 DAYS · SECURE STRIPE CHECKOUT
             </p>
             <button
@@ -141,7 +141,7 @@ export default function CartDrawer() {
                 setDrawerOpen(false)
                 navigate("/checkout")
               }}
-              className="w-full bg-gold text-black font-mono2 text-xs tracking-[0.3em] py-4 hover:bg-[#c5a878] transition-colors"
+              className="w-full bg-[var(--c-accent)] text-[var(--c-accent-inv)] font-mono2 text-xs tracking-[0.3em] py-4 hover:bg-[var(--c-accent-hover)] transition-colors"
             >
               CHECKOUT →
             </button>

@@ -130,7 +130,7 @@ const WOMEN_PRODUCTS: StoreProduct[] = [
       ["CARE", "Rinse + air dry"],
       ["ROUTINE", "A few min per wash"],
     ],
-    price: 2299,
+    price: 2799,
     currency: "USD",
     images: [
       GLOWUP_IMG("scalp-massager-brush", "scalp-massager-brush_01_bathroom-shelf"),

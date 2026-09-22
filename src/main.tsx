@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import './index.css'
+import './theme-brands.css'
 import App from './App.tsx'
 
 // Base-aware router so client-side navigation works under a sub-path deploy

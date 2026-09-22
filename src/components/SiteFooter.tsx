@@ -28,44 +28,44 @@ export default function SiteFooter({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <Link
             to={brandPath}
-            className="font-display text-2xl text-white hover:text-gold transition-colors"
+            className="font-display text-2xl text-[var(--c-ink)] hover:text-[var(--c-accent)] transition-colors"
           >
             {wordmark}
-            <span className="text-gold">.</span>
+            <span className="text-[var(--c-accent)]">.</span>
           </Link>
           <nav
             aria-label="Footer"
-            className="font-mono2 text-[10px] tracking-[0.2em] text-neutral-400 flex flex-wrap gap-x-6 gap-y-2"
+            className="font-mono2 text-[10px] tracking-[0.2em] text-[var(--c-mut)] flex flex-wrap gap-x-6 gap-y-2"
           >
             {brand ? (
               <Link
                 to={`${brandPath}/roadmap`}
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--c-ink)] transition-colors"
               >
                 {brand === "glowup" ? "THE RITUAL" : "THE ROADMAP"}
               </Link>
             ) : (
               <>
-                <Link to="/ascend" className="hover:text-white transition-colors">
+                <Link to="/ascend" className="hover:text-[var(--c-ink)] transition-colors">
                   ASCEND — MEN'S
                 </Link>
                 <Link
                   to="/glowup"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[var(--c-ink)] transition-colors"
                 >
                   GLOWUP — WOMEN'S
                 </Link>
               </>
             )}
-            <Link to="/privacy" className="hover:text-white transition-colors">
+            <Link to="/privacy" className="hover:text-[var(--c-ink)] transition-colors">
               PRIVACY POLICY
             </Link>
-            <Link to="/terms" className="hover:text-white transition-colors">
+            <Link to="/terms" className="hover:text-[var(--c-ink)] transition-colors">
               TERMS OF SERVICE
             </Link>
           </nav>
         </div>
-        <div className="font-mono2 text-[10px] tracking-[0.2em] text-neutral-500 flex flex-wrap gap-x-6 gap-y-2">
+        <div className="font-mono2 text-[10px] tracking-[0.2em] text-[var(--c-mut2)] flex flex-wrap gap-x-6 gap-y-2">
           {!slim && (
             <>
               <span>FREE TRACKED SHIPPING</span>

@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { Routes, Route, useLocation } from "react-router"
 import { CartProvider } from "@/store/CartContext"
+import { useBrand } from "@/lib/useBrand"
 import Landing from "@/pages/Landing"
 import Home from "@/pages/Home"
 import ProductPage from "@/pages/ProductPage"
@@ -11,15 +12,6 @@ import PrivacyPage from "@/pages/PrivacyPage"
 import TermsPage from "@/pages/TermsPage"
 import NotFoundPage from "@/pages/NotFoundPage"
 
-/** SPA scroll restoration — route changes reset to the top. */
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-  return null
-}
-
 export default function App() {
   // Signal to the prerenderer that the route has painted, so the
   // captured static HTML contains the full page (content + SEO tags).
@@ -29,7 +21,26 @@ export default function App() {
 
   return (
     <CartProvider>
-      <ScrollToTop />
+      <BrandShell />
+    </CartProvider>
+  )
+}
+
+/**
+ * Applies the active sub-brand as `data-brand` onto a wrapper so the theme
+ * layer (src/theme-brands.css) can restyle /glowup pastel while /ascend and
+ * shared routes (checkout/legal) keep the dark-luxury shell. Also resets the
+ * scroll position on route change (SPA scroll restoration).
+ */
+function BrandShell() {
+  const brand = useBrand()
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return (
+    <div data-brand={brand}>
       <Routes>
         {/* Root landmark: dual-sub-brand chooser */}
         <Route path="/" element={<Landing />} />
@@ -60,6 +71,6 @@ export default function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </CartProvider>
+    </div>
   )
 }

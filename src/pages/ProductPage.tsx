@@ -35,13 +35,13 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a]">
+      <div className="min-h-screen bg-[var(--c-bg)]">
         <TopBar />
         <div className="pt-40 text-center">
-          <p className="font-display text-4xl text-neutral-600">NOT FOUND</p>
+          <p className="font-display text-4xl text-[var(--c-mut4)]">NOT FOUND</p>
           <Link
             to={brandPath}
-            className="font-mono2 text-[11px] tracking-[0.25em] text-gold mt-4 inline-block"
+            className="font-mono2 text-[11px] tracking-[0.25em] text-[var(--c-accent)] mt-4 inline-block"
           >
             ← BACK TO {BRAND_LABEL[brand]}
           </Link>
@@ -67,7 +67,7 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[var(--c-bg)]">
       <Seo
         title={`${product.title} | ${BRAND_LABEL[brand]} · FIXETTA`}
         description={product.description}
@@ -82,23 +82,23 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
       <div className="pt-14 mx-auto max-w-7xl">
         <nav
           aria-label="Breadcrumb"
-          className="px-5 py-4 border-b hairline font-mono2 text-[10px] tracking-[0.25em] text-neutral-500"
+          className="px-5 py-4 border-b hairline font-mono2 text-[10px] tracking-[0.25em] text-[var(--c-mut2)]"
         >
-          <Link to={brandPath} className="hover:text-white">
+          <Link to={brandPath} className="hover:text-[var(--c-ink)]">
             {BRAND_LABEL[brand]}
           </Link>
           <span className="mx-2">/</span>
-          <Link to={`${brandPath}/roadmap`} className="hover:text-white">
+          <Link to={`${brandPath}/roadmap`} className="hover:text-[var(--c-ink)]">
             ROADMAP
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gold">{product.shortName}</span>
+          <span className="text-[var(--c-accent)]">{product.shortName}</span>
         </nav>
 
         <div className="grid lg:grid-cols-2">
           {/* ── Gallery ──────────────────────────────────── */}
           <div className="border-r hairline">
-            <div className="aspect-square bg-[#111]">
+            <div className="aspect-square bg-[var(--c-bg-sub)]">
               <img
                 src={product.images[activeImage]}
                 alt={product.imageAlts[activeImage] ?? product.title}
@@ -106,7 +106,7 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
               />
             </div>
             {product.images.length > 1 && (
-              <div className="flex flex-wrap justify-center gap-px bg-white/10 border-t hairline">
+              <div className="flex flex-wrap justify-center gap-px bg-[var(--c-line)] border-t hairline">
                 {product.images.map((img, i) => {
                   if (i === activeImage) return null
                   return (
@@ -114,7 +114,7 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
                       key={img}
                       onClick={() => setActiveImage(i)}
                       aria-label={`View image ${i + 1} of ${product.images.length}`}
-                      className="w-[calc(50%-0.5px)] aspect-square bg-[#111] opacity-70 hover:opacity-100"
+                      className="w-[calc(50%-0.5px)] aspect-square bg-[var(--c-bg-sub)] opacity-70 hover:opacity-100"
                     >
                       <img
                         src={img}
@@ -131,46 +131,46 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
 
           {/* ── Details ──────────────────────────────────── */}
           <div className="px-5 lg:px-12 py-12 flex flex-col">
-            <p className="font-mono2 text-[11px] tracking-[0.3em] text-gold">
+            <p className="font-mono2 text-[11px] tracking-[0.3em] text-[var(--c-accent)]">
               {product.tagline.toUpperCase()}
             </p>
-            <h1 className="font-display text-6xl text-white mt-4">
+            <h1 className="font-display text-6xl text-[var(--c-ink)] mt-4">
               {product.shortName}
             </h1>
-            <p className="font-mono2 text-2xl text-white mt-4">
+            <p className="font-mono2 text-2xl text-[var(--c-ink)] mt-4">
               {formatMoney(product.price)}
             </p>
-            <p className="text-neutral-400 leading-relaxed mt-8 max-w-md">
+            <p className="text-[var(--c-mut)] leading-relaxed mt-8 max-w-md">
               {product.description}
             </p>
 
             {/* ── Why it works ─────────────────────────── */}
-            <h2 className="font-mono2 text-[11px] tracking-[0.3em] text-gold mt-10">
+            <h2 className="font-mono2 text-[11px] tracking-[0.3em] text-[var(--c-accent)] mt-10">
               WHY IT WORKS
             </h2>
             <ul className="mt-4 space-y-2 max-w-md">
               {product.benefits.map((b) => (
                 <li
                   key={b}
-                  className="flex gap-3 text-sm text-neutral-300 leading-relaxed"
+                  className="flex gap-3 text-sm text-[var(--c-mut3)] leading-relaxed"
                 >
-                  <span className="text-gold mt-0.5 shrink-0">—</span>
+                  <span className="text-[var(--c-accent)] mt-0.5 shrink-0">—</span>
                   {b}
                 </li>
               ))}
             </ul>
 
             {/* ── The protocol ─────────────────────────── */}
-            <h2 className="font-mono2 text-[11px] tracking-[0.3em] text-gold mt-10">
+            <h2 className="font-mono2 text-[11px] tracking-[0.3em] text-[var(--c-accent)] mt-10">
               THE PROTOCOL
             </h2>
             <ol className="mt-4 space-y-2 max-w-md">
               {product.protocol.map((step, i) => (
                 <li
                   key={step}
-                  className="flex gap-3 text-sm text-neutral-300 leading-relaxed"
+                  className="flex gap-3 text-sm text-[var(--c-mut3)] leading-relaxed"
                 >
-                  <span className="font-mono2 text-[10px] text-gold mt-1 shrink-0">
+                  <span className="font-mono2 text-[10px] text-[var(--c-accent)] mt-1 shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {step}
@@ -189,23 +189,23 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
                   key={k}
                   className="flex justify-between gap-4 border hairline px-4 py-3 font-mono2 text-[11px]"
                 >
-                  <span className="tracking-[0.25em] text-neutral-500 shrink-0">
+                  <span className="tracking-[0.25em] text-[var(--c-mut2)] shrink-0">
                     {k}
                   </span>
-                  <span className="text-neutral-300 text-right">{v}</span>
+                  <span className="text-[var(--c-mut3)] text-right">{v}</span>
                 </div>
               ))}
             </div>
 
             <button
               onClick={() => addItem(product.handle)}
-              className="mt-10 max-w-md bg-gold text-black font-mono2 text-xs tracking-[0.3em] py-5 hover:bg-[#c5a878] transition-colors"
+              className="mt-10 max-w-md bg-[var(--c-accent)] text-[var(--c-accent-inv)] font-mono2 text-xs tracking-[0.3em] py-5 hover:bg-[var(--c-accent-hover)] transition-colors"
             >
               ADD TO CART — {formatMoney(product.price)}
             </button>
-            <p className="mt-4 max-w-md font-mono2 text-[9px] tracking-[0.15em] text-neutral-600 leading-relaxed">
+            <p className="mt-4 max-w-md font-mono2 text-[9px] tracking-[0.15em] text-[var(--c-mut4)] leading-relaxed">
               COSMETIC TOOL — NOT A MEDICAL DEVICE. INDIVIDUAL RESULTS VARY. SEE{" "}
-              <Link to="/terms" className="underline hover:text-neutral-400">
+              <Link to="/terms" className="underline hover:text-[var(--c-mut3)]">
                 TERMS
               </Link>
               .
@@ -216,7 +216,7 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
         {/* ── More from the ritual ───────────────────────── */}
         {others.length > 0 && (
           <div className="border-t hairline px-5 py-16">
-            <h2 className="font-display text-3xl text-white mb-8">
+            <h2 className="font-display text-3xl text-[var(--c-ink)] mb-8">
               COMPLETE THE RITUAL
             </h2>
             <div className="grid sm:grid-cols-3 gap-4">
@@ -224,9 +224,9 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
                 <Link
                   key={p.handle}
                   to={`${brandPath}/product/${p.handle}`}
-                  className="group border hairline hover:border-gold transition-colors"
+                  className="group border hairline hover:border-[var(--c-accent)] transition-colors"
                 >
-                  <div className="aspect-square bg-[#111]">
+                  <div className="aspect-square bg-[var(--c-bg-sub)]">
                     <img
                       src={p.images[0]}
                       alt={p.imageAlts[0] ?? p.title}
@@ -235,10 +235,10 @@ export default function ProductPage({ brand }: { brand: BrandKey }) {
                     />
                   </div>
                   <div className="px-4 py-3 flex justify-between items-center">
-                    <span className="font-display text-lg text-white group-hover:text-gold transition-colors">
+                    <span className="font-display text-lg text-[var(--c-ink)] group-hover:text-[var(--c-accent)] transition-colors">
                       {p.shortName}
                     </span>
-                    <span className="font-mono2 text-xs text-gold">
+                    <span className="font-mono2 text-xs text-[var(--c-accent)]">
                       {formatMoney(p.price)}
                     </span>
                   </div>

@@ -6,8 +6,13 @@ import SiteFooter from "@/components/SiteFooter"
 import Seo from "@/lib/seo"
 import { useCart } from "@/store/CartContext"
 import { BRANDS, type BrandKey } from "@/lib/catalog"
+import GlowupHome from "@/pages/GlowupHome"
 
 export default function Home({ brand }: { brand: BrandKey }) {
+  // glowup renders the approved pastel-floral storefront (brand branch);
+  // ASCEND keeps the existing dark-luxury layout below (polish only).
+  if (brand === "glowup") return <GlowupHome />
+
   const { live } = useCart()
   const cfg = BRANDS[brand]
   // Products currently in the live pool for this brand.
@@ -70,7 +75,7 @@ export default function Home({ brand }: { brand: BrandKey }) {
                 to={`${brandPath}/roadmap`}
                 className="border hairline-strong text-white font-mono2 text-xs tracking-[0.3em] px-8 py-4 hover:border-gold hover:text-gold transition-colors"
               >
-                {brand === "glowup" ? "THE BEAUTY RITUAL →" : "THE ROADMAP →"}
+                THE ROADMAP →
               </Link>
             </div>
             <div className="mt-14 grid grid-cols-3 gap-px bg-white/10 border hairline max-w-md">
@@ -139,7 +144,7 @@ export default function Home({ brand }: { brand: BrandKey }) {
             ],
             [
               "03 / CONSISTENT",
-              `${brand === "glowup" ? "A few minutes a day" : "Ten minutes a day, every day"}. Small inputs, compounded over months.`,
+              `Ten minutes a day, every day. Small inputs, compounded over months.`,
             ],
           ].map(([title, body]) => (
             <div key={title} className="bg-[#0a0a0a] px-8 py-12">
