@@ -102,6 +102,16 @@ function serve() {
 }
 
 async function main() {
+  // Vercel's build sandbox can't launch headless Chrome (missing system libs:
+  // libnspr4.so etc.) and Vercel serves the SPA itself via vercel.json rewrites.
+  // Skip static prerender there — local builds and GH Pages keep full prerender.
+  if (process.env.VERCEL) {
+    console.log(
+      "Vercel build: skipping static prerender (SPA served via vercel.json rewrites)."
+    )
+    return
+  }
+
   if (!existsSync(path.join(DIST, "index.html"))) {
     console.error("dist/index.html not found — run `vite build` first.")
     process.exit(1)
