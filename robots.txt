@@ -1,0 +1,9 @@
+# Fixetta storefront — ASCEND (men's) + glowup (women's) sub-brands.
+# TODO(launch): domain confirmed as fixetta.com — keep this Sitemap URL in sync
+# with sitemap.xml and src/lib/seo.ts SITE_URL.
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /confirmation
+
+Sitemap: https://fixetta.com/sitemap.xml
